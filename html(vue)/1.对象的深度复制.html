@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>纯数据的对象/数组的深度克隆(内部没用方法的时候才可用)</title>
+		<script>
+		  var objCloned = JSON.parse(JSON.stringify(obj));
+
+		  //深度克隆  (包含方法的复制)
+      var objects = [{ 'a': 1 }, { 'b': 2,'clone':()=>{console.log(123)}}];
+      var deep = _.cloneDeep(objects);
+      console.log('clone',deep[0] === objects[0]);// => false
+      deep[1].clone()
+  		</script>
+	</head>
+	<body>
+	</body>
+</html>

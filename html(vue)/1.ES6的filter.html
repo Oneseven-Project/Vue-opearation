@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>ES5filter与Es6find</title>
+		<script>
+		  var users = [
+        { 'user': 'barney', 'age': 36, 'active': true },
+        { 'user': 'fred',   'age': 40, 'active': false },
+        { 'user': 'ared',   'age': 24, 'active': false },
+        { 'user': 'ered',   'age': 80, 'active': false }
+      ];
+		  function isBigEnough(element) {
+        return element.age === 36 || element.age === 24
+      }
+		  var filtered = users.filter(isBigEnough);
+		  console.log('filter', filtered)
+		  // 返回符合条件的第一个值
+		  var filteded2 = users.find((n) => n.age===24)
+		  console.log('find', filteded2)
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

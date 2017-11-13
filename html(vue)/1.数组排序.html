@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>数组排序</title>
+		<script>
+		  // 普通数组
+		  var arr = [10,5,40,25,1000,1]
+		  // 升序排列
+      function sortNumber(a,b){
+        return a - b
+      }
+      // 降序排列
+      function sortNumber2(a,b){
+        return b - a
+      }
+      var newArr = arr.sort(sortNumber2)
+      console.log('数组', newArr)
+
+      //  ##数组对象
+      var arrObj = [
+        {name:'zopp',age:0},
+        {name:'gpp',age:188},
+        {name:'yjj',age:8888},
+        {name:'aaa',age:118},
+        {name:'bbb',age:58}
+      ];
+      //升序排序
+      function compare(property){
+        return function(a,b){
+          var value1 = a[property];
+          var value2 = b[property];
+          return value1 - value2;
+        }
+      }
+      //降序排列
+      function compare2(property){
+        return function(a,b){
+          var value1 = a[property];
+          var value2 = b[property];
+          return  value2 - value1;
+        }
+      }
+      var newArrObj = arrObj.sort(compare2('age'))
+      console.log('数组对象', newArrObj)
+
+      // 如何根据参数不同，来确定是升序排列，还是降序排序呢？  true 升序， false降序
+     function sortBy(attr,rev){
+       //第二个参数没有传递 默认升序排列
+        if(rev ==  undefined){
+          rev = 1;
+        }else{
+          rev = (rev) ? 1 : -1;
+        }
+        return function(a,b){
+          a = a[attr];
+          b = b[attr];
+          if(a < b){
+            return rev * -1;
+          }
+          if(a > b){
+            return rev * 1;
+          }
+          return 0;
+        }
+      }
+      var newArrChange = arrObj.sort(sortBy('age',false))
+      console.log('根据参数决定升序/降序', newArrChange)
+
+      // lodash方法
+      /*
+      sortBy(this.cloneGetGoodsList, (item) => {
+        return item.sort
+      })
+      */
+		</script>
+	</head>
+	<body>
+	</body>
+</html>
